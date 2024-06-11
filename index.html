@@ -21,7 +21,7 @@
 
       <section class="container" id="to-do-adder">
         <h2>Add To Do</h2>
-        <form id="to-do-form">
+        <form id="to-do-form" onsubmit="addToDo()">
           <label for="to-do-description">Description: </label>
           <input
             type="text"
@@ -29,7 +29,7 @@
             placeholder="What to do?"
             required
           />
-          <button type="submit">Add</button>
+          <button type="button" onclick="addToDo()">Add</button>
         </form>
       </section>
     </main>
