@@ -1,29 +1,29 @@
 "use strict";
 
 const resetToDoList = () => {
-    const toDoList = document.getElementById("to-do-list");
+    const toDoList = document.getElementById("toDoList");
 
     if (toDoList.childElementCount == 1) {
         const emptyPlaceholder = document.createElement("p");
         emptyPlaceholder.textContent = "No tasks to show.";
-        emptyPlaceholder.id = "empty-placeholder";
+        emptyPlaceholder.id = "emptyPlaceholder";
         toDoList.appendChild(emptyPlaceholder);
     }
 }
 
 const addToDo = () => {
-    const toDo = document.getElementById("to-do-description");
-    const toDoList = document.getElementById("to-do-list");
-    const emptyPlaceholder = document.getElementById("empty-placeholder");
+    const toDo = document.getElementById("toDoDescription");
+    const toDoList = document.getElementById("toDoList");
+    const emptyPlaceholder = document.getElementById("emptyPlaceholder");
     let toDos;
 
     if (emptyPlaceholder) {
         toDoList.removeChild(emptyPlaceholder);
         toDos = document.createElement("ul");
-        toDos.id = "to-dos";
+        toDos.id = "toDos";
         toDoList.appendChild(toDos);
     } else {
-        toDos = document.getElementById("to-dos");
+        toDos = document.getElementById("toDos");
     }
 
     const prevToDo = toDos.lastElementChild;
