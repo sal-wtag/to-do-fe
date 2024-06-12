@@ -11,6 +11,25 @@ const resetToDoList = () => {
     }
 }
 
+const createToDos = () => {
+    const toDos = document.createElement("ul");
+    toDos.id = "to-dos";
+
+    return toDos;
+}
+
+const createToDo = (id, description) => {
+    const newToDo = document.createElement("li");
+    newToDo.textContent = description;
+    newToDo.id = id;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    newToDo.appendChild(deleteButton);
+
+    return newToDo;
+}
+
 const addToDo = () => {
     const toDo = document.getElementById("to-do-description");
     const toDoList = document.getElementById("to-do-list");
@@ -19,8 +38,7 @@ const addToDo = () => {
 
     if (emptyPlaceholder) {
         toDoList.removeChild(emptyPlaceholder);
-        toDos = document.createElement("ul");
-        toDos.id = "to-dos";
+        toDos = createToDos();
         toDoList.appendChild(toDos);
     } else {
         toDos = document.getElementById("to-dos");
@@ -29,9 +47,7 @@ const addToDo = () => {
     const prevToDo = toDos.lastElementChild;
     const newId = prevToDo ? prevToDo.id + 1 : 1;
 
-    const newToDo = document.createElement("li");
-    newToDo.textContent = toDo.value;
-    newToDo.id = newId;
+    const newToDo = createToDo(newId, toDo.value);
     toDos.appendChild(newToDo);
 }
 
