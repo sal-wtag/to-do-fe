@@ -21,15 +21,10 @@
 
       <section class="container" id="toDoAdder">
         <h2>Add To Do</h2>
-        <form id="toDoForm" onsubmit="addToDo()">
-          <input
-            type="text"
-            id="toDoDescription"
-            placeholder="What to do?"
-            required
-          />
+        <div id="toDoForm" onsubmit="addToDo()">
+          <textarea name="taskDescription" id="taskDescription" placeholder="Write here..." rows="8" cols="32"></textarea>
           <button type="button" onclick="addToDo()">Add</button>
-        </form>
+        </div>
       </section>
     </main>
 

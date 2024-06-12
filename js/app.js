@@ -12,7 +12,7 @@ const resetToDoList = () => {
 }
 
 const addToDo = () => {
-    const toDo = document.getElementById("toDoDescription");
+    const toDo = document.getElementById("taskDescription");
     const toDoList = document.getElementById("toDoList");
     const emptyPlaceholder = document.getElementById("emptyPlaceholder");
     let toDos;
