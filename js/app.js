@@ -11,6 +11,19 @@ const resetToDoList = () => {
     }
 }
 
+const deleteToDo = (id) => {
+    const toDos = document.getElementById("to-dos");
+    const toDo = document.getElementById(id);
+
+    toDos.removeChild(toDo);
+
+    if (toDos.childElementCount == 0) {
+        const toDoList = document.getElementById("to-do-list");
+        toDoList.removeChild(toDos);
+        resetToDoList();
+    }
+}
+
 const createToDos = () => {
     const toDos = document.createElement("ul");
     toDos.id = "to-dos";
@@ -25,6 +38,9 @@ const createToDo = (id, description) => {
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+        deleteToDo(id);
+    });
     newToDo.appendChild(deleteButton);
 
     return newToDo;
