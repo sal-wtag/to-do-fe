@@ -3,7 +3,7 @@
 const resetToDoList = () => {
     const toDoList = document.getElementById("toDoList");
 
-    if (toDoList.childElementCount == 1) {
+    if (toDoList.childElementCount == 0) {
         const emptyPlaceholder = document.createElement("p");
         emptyPlaceholder.textContent = "No tasks to show.";
         emptyPlaceholder.id = "emptyPlaceholder";
@@ -12,7 +12,7 @@ const resetToDoList = () => {
 }
 
 const addToDo = () => {
-    const toDo = document.getElementById("taskDescription");
+    const taskDescription = document.getElementById("taskDescription");
     const toDoList = document.getElementById("toDoList");
     const emptyPlaceholder = document.getElementById("emptyPlaceholder");
     let toDos;
@@ -26,11 +26,9 @@ const addToDo = () => {
         toDos = document.getElementById("toDos");
     }
 
-    const prevToDo = toDos.lastElementChild;
-    const newId = prevToDo ? prevToDo.id + 1 : 1;
-
+    const newId = `task${Date.now()}`;
     const newToDo = document.createElement("li");
-    newToDo.textContent = toDo.value;
+    newToDo.textContent = taskDescription.value;
     newToDo.id = newId;
     toDos.appendChild(newToDo);
 }

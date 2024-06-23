@@ -10,21 +10,20 @@
   <body>
     <header>
       <div class="navbar">
-        <h1>TO DO</h1>
+        <h1>Todos</h1>
       </div>
     </header>
 
     <main>
-      <section class="container" id="toDoList">
-        <h2>To Do List</h2>
-      </section>
-
       <section class="container" id="toDoAdder">
-        <h2>Add To Do</h2>
+        <h2>Add Tasks</h2>
         <div id="toDoForm" onsubmit="addToDo()">
-          <textarea name="taskDescription" id="taskDescription" placeholder="Write here..." rows="8" cols="32"></textarea>
+          <input type="text" name="taskDescription" id="taskDescription" placeholder="Write here.."></input>
           <button type="button" onclick="addToDo()">Add</button>
         </div>
+      </section>
+
+      <section class="container" id="toDoList">
       </section>
     </main>
 
