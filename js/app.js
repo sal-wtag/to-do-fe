@@ -11,6 +11,41 @@ const resetToDoList = () => {
     }
 }
 
+const deleteToDo = (id) => {
+    const toDos = document.getElementById("toDos");
+    const toDo = document.getElementById(id);
+
+    toDos.removeChild(toDo);
+
+    if (toDos.childElementCount == 0) {
+        const toDoList = document.getElementById("toDoList");
+        toDoList.removeChild(toDos);
+        resetToDoList();
+    }
+}
+
+const createToDos = () => {
+    const toDos = document.createElement("ul");
+    toDos.id = "toDos";
+
+    return toDos;
+}
+
+const createToDo = (id, description) => {
+    const newToDo = document.createElement("li");
+    newToDo.textContent = description;
+    newToDo.id = id;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+        deleteToDo(id);
+    });
+    newToDo.appendChild(deleteButton);
+
+    return newToDo;
+}
+
 const addToDo = () => {
     const taskDescription = document.getElementById("taskDescription");
     const toDoList = document.getElementById("toDoList");
@@ -19,17 +54,14 @@ const addToDo = () => {
 
     if (emptyPlaceholder) {
         toDoList.removeChild(emptyPlaceholder);
-        toDos = document.createElement("ul");
-        toDos.id = "toDos";
+        toDos = createToDos();
         toDoList.appendChild(toDos);
     } else {
         toDos = document.getElementById("toDos");
     }
 
     const newId = `task${Date.now()}`;
-    const newToDo = document.createElement("li");
-    newToDo.textContent = taskDescription.value;
-    newToDo.id = newId;
+    const newToDo = createToDo(newId, taskDescription.value);
     toDos.appendChild(newToDo);
 }
 
