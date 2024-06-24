@@ -12,13 +12,13 @@ const resetToDoList = () => {
 }
 
 const deleteToDo = (id) => {
-    const toDos = document.getElementById("to-dos");
+    const toDos = document.getElementById("toDos");
     const toDo = document.getElementById(id);
 
     toDos.removeChild(toDo);
 
     if (toDos.childElementCount == 0) {
-        const toDoList = document.getElementById("to-do-list");
+        const toDoList = document.getElementById("toDoList");
         toDoList.removeChild(toDos);
         resetToDoList();
     }
@@ -26,7 +26,7 @@ const deleteToDo = (id) => {
 
 const createToDos = () => {
     const toDos = document.createElement("ul");
-    toDos.id = "to-dos";
+    toDos.id = "toDos";
 
     return toDos;
 }
