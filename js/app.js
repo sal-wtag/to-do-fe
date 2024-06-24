@@ -3,13 +3,10 @@
 const toDoList = new ToDoList();
 
 document.addEventListener("DOMContentLoaded", () => {
-    const toDoAddButton = document.getElementById(TO_DO_ADD_BUTTON_ID);
+    const toDoCreateButton = document.getElementById(TO_DO_CREATE_BUTTON_ID);
 
-    toDoAddButton.addEventListener("click", () => {
-        const toDoForm = document.getElementById(TO_DO_FORM_ID);
-        const toDo = new ToDo(toDoForm);
-
-        toDoList.add(toDo);
+    toDoCreateButton.addEventListener("click", () => {
+        toDoList.generateForm();
         toDoList.render();
     });
 
