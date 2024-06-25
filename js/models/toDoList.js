@@ -14,6 +14,19 @@ class ToDoList {
     this.toDos = this.toDos.filter((toDo) => toDo.id != id);
   };
 
+  search = (searchValue) => {
+    console.log(searchValue);
+    console.log(this.toDos);
+
+    const searchResults = this.toDos.filter((toDo) =>
+      toDo.description.includes(searchValue)
+    );
+
+    console.log(searchResults);
+
+    return searchResults;
+  };
+
   generateForm = () => {
     this.form = document.createElement("div");
 
@@ -48,14 +61,14 @@ class ToDoList {
     this.form.appendChild(cancelButton);
   };
 
-  render = () => {
+  render = (toDos = this.toDos) => {
     const viewSection = document.getElementById(VIEW_SECTION_ID);
 
     while (viewSection.firstChild) {
       viewSection.removeChild(viewSection.firstChild);
     }
 
-    if (!this.toDos.length && !this.form) {
+    if (!toDos.length && !this.form) {
       this.#renderEmpty(viewSection);
     }
 
@@ -63,8 +76,8 @@ class ToDoList {
       this.#renderForm(viewSection);
     }
 
-    if (this.toDos.length) {
-      this.#renderList(viewSection);
+    if (toDos.length) {
+      this.#renderList(viewSection, toDos);
     }
   };
 
@@ -75,10 +88,10 @@ class ToDoList {
     viewSection.appendChild(p);
   };
 
-  #renderList = (viewSection) => {
+  #renderList = (viewSection, toDos = this.toDos) => {
     const ul = document.createElement("ul");
 
-    for (let toDo of this.toDos) {
+    for (let toDo of toDos) {
       const li = toDo.toElement(this);
 
       ul.appendChild(li);
