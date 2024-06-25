@@ -10,6 +10,7 @@ class ToDo {
       this[field.name] = field.value;
     }
 
+    this.done = false;
     this.createdAt = new Date();
   }
 
@@ -25,11 +26,7 @@ class ToDo {
     const form = document.createElement("div");
 
     for (let key in this) {
-      if (typeof this[key] === "function") {
-        continue;
-      }
-
-      if (key === "id" || key === "createdAt") {
+      if (!TO_DO_TEXT_INPUTS.has(key)){
         continue;
       }
 
@@ -68,7 +65,7 @@ class ToDo {
     const li = document.createElement("li");
 
     for (let key in this) {
-      if (typeof this[key] === "function") {
+      if (!TO_DO_SHOWABLE_FIELDS.has(key)) {
         continue;
       }
 
@@ -80,6 +77,7 @@ class ToDo {
       const p = document.createElement("p");
 
       p.textContent = `${this.#camelToTitleCase(key)}: ${this[key]}`;
+      p.style["text-decoration"] = this.done ? "line-through" : "none";
 
       li.appendChild(p);
     }
@@ -96,13 +94,25 @@ class ToDo {
 
     const editButton = document.createElement("button");
 
-    editButton.textContent = "Edit";
-    editButton.addEventListener("click", () => {
-      const form = this.toEditform(toDoList);
-      editButton.parentElement.replaceWith(form);
+    if (!this.done) {
+      editButton.textContent = "Edit";
+      editButton.addEventListener("click", () => {
+        const form = this.toEditform(toDoList);
+        editButton.parentElement.replaceWith(form);
+      });
+
+      li.appendChild(editButton);
+    }
+
+    const markAsDoneButton = document.createElement("button");
+
+    markAsDoneButton.textContent = "Done";
+    markAsDoneButton.addEventListener("click", () => {
+      this.done = true;
+      toDoList.render();
     });
 
-    li.appendChild(editButton);
+    li.appendChild(markAsDoneButton);
 
     return li;
   };
