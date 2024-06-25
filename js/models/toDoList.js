@@ -27,6 +27,12 @@ class ToDoList {
     return searchResults;
   };
 
+  filterByDone = (done) => {
+    const filtered = this.toDos.filter((toDo) => toDo.done === done);
+
+    return filtered;
+  }
+
   generateForm = () => {
     this.form = document.createElement("div");
 
