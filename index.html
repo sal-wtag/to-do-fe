@@ -15,18 +15,21 @@
     </header>
 
     <main>
-      <section id="toDoAdder">
+      <section id="toDoAdd">
         <h2>Add Tasks</h2>
-        <div id="toDoForm">
-          <input type="text" name="taskDescription" id="taskDescription" placeholder="Write here..."></input>
-          <button type="button" onclick="addToDo()">Add</button>
-        </div>
+        <!-- <div id="toDoForm">
+          <input type="text" name="taskDescription" placeholder="Write here..."></input>
+          <button type="button" id="toDoAddButton">Add</button>
+        </div> -->
+        <button type="button" id="toDoCreateButton">Create</button>
       </section>
 
-      <section id="toDoList">
+      <section id="toDoView">
       </section>
     </main>
 
+    <script src="js/constants.js"></script>
+    <script src="js/models.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
