@@ -1,6 +1,11 @@
 "use strict";
 
-class ToDoList {
+import ToDo from "./toDo.js";
+import * as constants from "../constants.js";
+
+const { VIEW_SECTION_ID } = constants;
+
+export default class ToDoList {
   constructor() {
     this.toDos = [];
     this.form = null;
@@ -15,14 +20,9 @@ class ToDoList {
   };
 
   search = (searchValue) => {
-    console.log(searchValue);
-    console.log(this.toDos);
-
     const searchResults = this.toDos.filter((toDo) =>
       toDo.description.includes(searchValue)
     );
-
-    console.log(searchResults);
 
     return searchResults;
   };
@@ -31,7 +31,7 @@ class ToDoList {
     const filtered = this.toDos.filter((toDo) => toDo.done === done);
 
     return filtered;
-  }
+  };
 
   generateForm = () => {
     this.form = document.createElement("div");
