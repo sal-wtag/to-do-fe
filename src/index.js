@@ -1,5 +1,17 @@
 "use strict";
 
+import * as constants from "./constants.js";
+import ToDoList from "./models/toDoList.js";
+
+const {
+    TO_DO_SEARCH_BUTTON_ID,
+    TO_DO_SEARCH_INPUT_ID,
+    TO_DO_NO_FILTER_BUTTON_ID,
+    TO_DO_DONE_FILTER_BUTTON_ID,
+    TO_DO_NOT_DONE_FILTER_BUTTON_ID,
+    TO_DO_CREATE_BUTTON_ID,
+} = constants;
+
 const toDoList = new ToDoList();
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -1,6 +1,10 @@
 "use strict";
 
-class ToDo {
+import * as constants from "../constants.js";
+
+const { TO_DO_TEXT_INPUTS, TO_DO_SHOWABLE_FIELDS } = constants;
+
+export default class ToDo {
   constructor(form) {
     this.id = Date.now();
 
@@ -22,7 +26,7 @@ class ToDo {
     }
   }
 
-  toEditform = (toDoList) => {
+  toEditForm = (toDoList) => {
     const form = document.createElement("div");
 
     for (let key in this) {
@@ -97,7 +101,7 @@ class ToDo {
     if (!this.done) {
       editButton.textContent = "Edit";
       editButton.addEventListener("click", () => {
-        const form = this.toEditform(toDoList);
+        const form = this.toEditForm(toDoList);
         editButton.parentElement.replaceWith(form);
       });
 
@@ -122,4 +126,9 @@ class ToDo {
       .replace(/([A-Z])/g, " $1")
       .replace(/^./, (str) => str.toUpperCase());
   };
+}
+
+if (typeof module !== "undefined") {
+  module.exports = ToDo;
+  console.log("Exported");
 }
